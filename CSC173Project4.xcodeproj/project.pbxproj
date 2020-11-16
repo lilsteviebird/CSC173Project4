@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3F2E6E162561FE9E002638DD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E6E152561FE9E002638DD /* main.c */; };
+		3F2E6E2125620D49002638DD /* CSGLIST.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E6E2025620D49002638DD /* CSGLIST.c */; };
+		3F2E6E242562161D002638DD /* Database.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E6E232562161D002638DD /* Database.c */; };
+		3F2E6E362562E1B8002638DD /* SNAPLIST.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E6E352562E1B8002638DD /* SNAPLIST.c */; };
+		3F2E6E3C2562E673002638DD /* CPLIST.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E6E3B2562E673002638DD /* CPLIST.c */; };
+		3F2E6E3F25631239002638DD /* CDHLIST.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E6E3E25631239002638DD /* CDHLIST.c */; };
+		3F2E6E4225631391002638DD /* CRLIST.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E6E4125631391002638DD /* CRLIST.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,18 @@
 /* Begin PBXFileReference section */
 		3F2E6E122561FE9E002638DD /* CSC173Project4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CSC173Project4; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F2E6E152561FE9E002638DD /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		3F2E6E1F25620D49002638DD /* CSGLIST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSGLIST.h; sourceTree = "<group>"; };
+		3F2E6E2025620D49002638DD /* CSGLIST.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CSGLIST.c; sourceTree = "<group>"; };
+		3F2E6E222562161D002638DD /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		3F2E6E232562161D002638DD /* Database.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Database.c; sourceTree = "<group>"; };
+		3F2E6E342562E1B8002638DD /* SNAPLIST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAPLIST.h; sourceTree = "<group>"; };
+		3F2E6E352562E1B8002638DD /* SNAPLIST.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SNAPLIST.c; sourceTree = "<group>"; };
+		3F2E6E3A2562E673002638DD /* CPLIST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPLIST.h; sourceTree = "<group>"; };
+		3F2E6E3B2562E673002638DD /* CPLIST.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CPLIST.c; sourceTree = "<group>"; };
+		3F2E6E3D25631239002638DD /* CDHLIST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDHLIST.h; sourceTree = "<group>"; };
+		3F2E6E3E25631239002638DD /* CDHLIST.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CDHLIST.c; sourceTree = "<group>"; };
+		3F2E6E4025631391002638DD /* CRLIST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRLIST.h; sourceTree = "<group>"; };
+		3F2E6E4125631391002638DD /* CRLIST.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CRLIST.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,18 @@
 			isa = PBXGroup;
 			children = (
 				3F2E6E152561FE9E002638DD /* main.c */,
+				3F2E6E4025631391002638DD /* CRLIST.h */,
+				3F2E6E4125631391002638DD /* CRLIST.c */,
+				3F2E6E3D25631239002638DD /* CDHLIST.h */,
+				3F2E6E3E25631239002638DD /* CDHLIST.c */,
+				3F2E6E342562E1B8002638DD /* SNAPLIST.h */,
+				3F2E6E352562E1B8002638DD /* SNAPLIST.c */,
+				3F2E6E3A2562E673002638DD /* CPLIST.h */,
+				3F2E6E3B2562E673002638DD /* CPLIST.c */,
+				3F2E6E1F25620D49002638DD /* CSGLIST.h */,
+				3F2E6E2025620D49002638DD /* CSGLIST.c */,
+				3F2E6E222562161D002638DD /* Database.h */,
+				3F2E6E232562161D002638DD /* Database.c */,
 			);
 			path = CSC173Project4;
 			sourceTree = "<group>";
@@ -119,7 +149,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2E6E242562161D002638DD /* Database.c in Sources */,
+				3F2E6E362562E1B8002638DD /* SNAPLIST.c in Sources */,
+				3F2E6E4225631391002638DD /* CRLIST.c in Sources */,
+				3F2E6E3C2562E673002638DD /* CPLIST.c in Sources */,
+				3F2E6E3F25631239002638DD /* CDHLIST.c in Sources */,
 				3F2E6E162561FE9E002638DD /* main.c in Sources */,
+				3F2E6E2125620D49002638DD /* CSGLIST.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
