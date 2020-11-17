@@ -49,6 +49,9 @@ int main(int argc, const char * argv[]) {
     insert_CDHDatabase("EE200", "W", "1PM", testData);
     insert_CDHDatabase("EE200", "Th", "10AM", testData);
     
+    print_Database(testData);
+    printf("\nNOW WE REMOVE SOMETHING\n");
+    print_Database(testData);
     bool running = true;
     while(running){
         int selection = 0;
@@ -64,7 +67,7 @@ int main(int argc, const char * argv[]) {
         printf("\n9. Lookup a Course and its Pre-Req");
         printf("\n10. Lookup a Course and its Room");
         printf("\n11. Lookup a Course and its Day and Hours");
-        
+
         printf("\nEnter a number: ");
         scanf("%d", &selection);
         if(selection == 1){
@@ -75,11 +78,11 @@ int main(int argc, const char * argv[]) {
             int id;
             char* grade = NULL;
             printf("\nPlease enter a Course: ");
-            scanf("%[^\n]%*c", course);
-//            printf("\nPlease enter an ID: ");
-//            scanf("%d", &id);
-//            printf("\nPlease enter a Grade: ");
-//            scanf("%[^\n]%*c", &course);
+            scanf("%s", &course);
+            printf("\nPlease enter an ID: ");
+            scanf("%d", &id);
+            printf("\nPlease enter a Grade: ");
+            scanf("%s", &grade);
             remove_CSGDatabase(id, course, grade, testData);
         }
         if(selection == 3){

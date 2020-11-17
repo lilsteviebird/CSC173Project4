@@ -77,7 +77,7 @@ CSGLIST* lookup_CSGLIST(CSGLIST* this, int idGiven){
     
     while(temp != NULL){
         if(temp->StudentId == idGiven){
-            add_CDHLIST(returnMe, temp->Course, temp->StudentId, temp->Grade);
+            add_CSGLIST(returnMe, temp->Course, temp->StudentId, temp->Grade);
         }
         temp = temp->next;
     }
