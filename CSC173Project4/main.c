@@ -9,13 +9,12 @@
 #include <stdio.h>
 
 #include "CSGLIST.h"
-
+#include <string.h>
 #include "Database.h"
+#include <stdbool.h>
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-
-
     Database testData = new_Database(5);
     //inserting CSG data
     insert_CSGDatabase("CSC101", 12345, "A", testData);
@@ -50,13 +49,72 @@ int main(int argc, const char * argv[]) {
     insert_CDHDatabase("EE200", "W", "1PM", testData);
     insert_CDHDatabase("EE200", "Th", "10AM", testData);
     
-    lookup_CSGDatabase(12345, testData);
-    //printf("\nNow we remove one of something from every list\n");
-    remove_CRDatabase("EE200", "25 Ohm Hall", testData);
-    remove_CSGDatabase(67890, "PH100", "C+", testData);
-    remove_SNAPDatabase(22222, "C. Brown","12 Apple St.", "555-1234", testData);
-    remove_CPDatabase("CS205", "CS101", testData);
-    remove_CDHDatabase("EE200", "W", "1PM", testData);
+    bool running = true;
+    while(running){
+        int selection = 0;
+        printf("Hello welcome to the Database tester please select an option you'd like to do");
+        printf("\n1. Print Database");
+        printf("\n2. Delete a specific Course, Student and Grade");
+        printf("\n3. Delete a specific Student, Name, Address and Phone Number");
+        printf("\n4. Delete a specific Course and Pre-Req");
+        printf("\n5. Delete a specific Course, and Room");
+        printf("\n6. Delete a specific Course, Day and Hour");
+        printf("\n7. Lookup a Student's Course and Grade");
+        printf("\n8. Lookup a Student's Name, Address, and Phone Number");
+        printf("\n9. Lookup a Course and its Pre-Req");
+        printf("\n10. Lookup a Course and its Room");
+        printf("\n11. Lookup a Course and its Day and Hours");
+        
+        printf("\nEnter a number: ");
+        scanf("%d", &selection);
+        if(selection == 1){
+            print_Database(testData);
+        }
+        if(selection == 2){
+            char* course = NULL;
+            int id;
+            char* grade = NULL;
+            printf("\nPlease enter a Course: ");
+            scanf("%[^\n]%*c", course);
+//            printf("\nPlease enter an ID: ");
+//            scanf("%d", &id);
+//            printf("\nPlease enter a Grade: ");
+//            scanf("%[^\n]%*c", &course);
+            remove_CSGDatabase(id, course, grade, testData);
+        }
+        if(selection == 3){
+            print_Database(testData);
+        }
+        if(selection == 4){
+            print_Database(testData);
+        }
+        if(selection == 5){
+            print_Database(testData);
+        }
+        if(selection == 6){
+            print_Database(testData);
+        }
+        if(selection == 7){
+            print_Database(testData);
+        }
+        if(selection == 8){
+            print_Database(testData);
+        }
+        if(selection == 9){
+            print_Database(testData);
+        }
+        if(selection == 10){
+            print_Database(testData);
+        }
+        if(selection == 11){
+            print_Database(testData);
+        }
+
+
+
+
+    }
+    
   
     
     return 0;
