@@ -58,11 +58,11 @@ void add_SNAPLIST(SNAPLIST* this,int idGiven, char* nameGiven, char* addressGive
 void removeElement_SNAPLIST(SNAPLIST* this, int idGiven, char* nameGiven, char* addressGiven, char* phoneGiven){
     SNAP* temp = this->head;
     SNAP* data = new_SNAP(idGiven, nameGiven, addressGiven, phoneGiven);
-    if(this->head->StudentId == data->StudentId){
+    if(this->head->StudentId == data->StudentId && this->head->Name != data->Name && this->head->Address != data->Address && this->head->Phone != data->Phone){
         this->head = temp->next;
     }
     else{
-        while(temp->next->StudentId != data->StudentId){
+        while(temp->next->StudentId != data->StudentId && temp->next->Name != data->Name && temp->next->Address != data->Address && temp->next->Phone != data->Phone){
             temp = temp->next;
         }
         SNAP* newNext = temp->next->next;
@@ -72,10 +72,10 @@ void removeElement_SNAPLIST(SNAPLIST* this, int idGiven, char* nameGiven, char* 
 }
 
 static void print_SNAP(SNAP* this){
-    printf("The student ID is: %d", this->StudentId);
+    printf("\nThe student ID is: %d", this->StudentId);
     printf("\nThe student name is: %s", this->Name);
     printf("\nThe student address is: %s", this->Address);
-    printf("\nThe student phone number is: %s", this->Phone);
+    printf("\nThe student phone number is: %s\n", this->Phone);
 }
 
 void print_SNAPLIST(SNAPLIST* this){

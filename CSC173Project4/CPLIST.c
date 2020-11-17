@@ -54,11 +54,11 @@ void add_CPLIST(CPLIST* this,char* courseGiven, char* preReqGiven){
 void removeElement_CPLIST(CPLIST* this, char* courseGiven, char* preReqGiven){
     CP* temp = this->head;
     CP* data = new_CP(courseGiven, preReqGiven);
-    if(this->head->Course == data->Course){
+    if(this->head->Course == data->Course && this->head->Prereq == data->Prereq){
         this->head = temp->next;
     }
     else{
-        while(temp->next->Course != data->Course){
+        while(temp->next->Course != data->Course && temp->next->Prereq != data->Prereq){
             temp = temp->next;
         }
         CP* newNext = temp->next->next;

@@ -13,7 +13,7 @@
 typedef struct CDH{
     char* Course;
     char* Day;
-    int Hour;
+    char* Hour;
     struct CDH *next;
 } CDH;
 
@@ -21,7 +21,7 @@ struct CDHLIST {
     struct CDH* head;
 };
 
-static CDH* new_CDH(char* courseGiven, char* dayGiven, int hourGiven ){
+static CDH* new_CDH(char* courseGiven, char* dayGiven, char* hourGiven ){
     CDH* this = (CDH*)malloc(sizeof(CDH));
     if(this == NULL){
         return NULL;
@@ -40,7 +40,7 @@ CDHLIST* new_CDHLIST(){
     return this;
 }
 
-void add_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, int hourGiven){
+void add_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, char* hourGiven){
     CDH* data = new_CDH(courseGiven, dayGiven, hourGiven);
     if(this->head == NULL){
         this->head = data;
@@ -53,14 +53,15 @@ void add_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, int hourGiven)
     }
 }
 
-void removeElement_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, int hourGiven){
+void removeElement_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, char* hourGiven){
     CDH* temp = this->head;
     CDH* data = new_CDH(courseGiven, dayGiven, hourGiven);
-    if(this->head->Course == data->Course){
+    if(this->head->Course == data->Course && this->head->Day == data->Day && this->head->Hour == data->Hour){
         this->head = temp->next;
     }
     else{
-        while(temp->next->Course != data->Course){
+
+        while(temp->next->Course != data->Course && temp->next->Day != data->Course && temp->next->Hour != data->Hour){
             temp = temp->next;
         }
         CDH* newNext = temp->next->next;
@@ -72,7 +73,7 @@ void removeElement_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, int 
 static void print_CDH(CDH* this){
     printf("\nThe course name is: %s", this->Course);
     printf("\nThe day of this course is: %s", this->Day);
-    printf("\nThe hours of this course is: %d\n", this->Hour);
+    printf("\nThe hours of this course is: %s\n", this->Hour);
 }
 
 void print_CDHLIST(CDHLIST* this){

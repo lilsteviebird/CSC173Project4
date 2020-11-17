@@ -22,19 +22,30 @@ typedef struct Database* Database;
 struct Database{
     int size;
     int count;
-    CSGLIST* csgBuckets[5];
-    SNAPLIST* snapBuckets[5];
-    CDHLIST* cdhBuckets[5];
-    CRLIST* crBuckets[5];
-    CPLIST* cpBuckets[5];
+    CSGLIST* csgBuckets[6];
+    SNAPLIST* snapBuckets[3];
+    CDHLIST* cdhBuckets[6];
+    CRLIST* crBuckets[4];
+    CPLIST* cpBuckets[8];
     
 };
 
 extern Database new_Database(int size);
+
+//insert functions
 extern void insert_CSGDatabase(char* courseGiven, int idGiven, char* gradeGiven, Database this);
 extern void insert_SNAPDatabase(int idGiven, char* nameGiven, char* addressGiven, char* phoneGiven, Database this);
-extern void insert_CDHDatabase(char* courseGiven, char* dayGiven, int hourGiven, Database this);
+extern void insert_CDHDatabase(char* courseGiven, char* dayGiven, char* hourGiven, Database this);
 extern void insert_CRDatabase(char* courseGiven, char* roomGiven, Database this);
 void insert_CPDatabase(char* courseGiven, char* prereqGiven, Database this);
+
+//delete functions
+extern void remove_CSGDatabase(int idGiven, char* courseGiven, char* gradeGiven, Database this);
+extern void remove_SNAPDatabase(int idGiven, char* nameGiven, char* addressGiven, char* phoneGiven, Database this);
+extern void remove_CDHDatabase(char* courseGiven, char* dayGiven, char* hourGiven, Database this);
+extern void remove_CRDatabase(char* courseGiven, char* roomGiven, Database this);
+extern void remove_CPDatabase(char* courseGiven, char* prereqGiven, Database this);
+
+//Print Database
 extern void print_Database(Database this);
 #endif /* Database_h */

@@ -13,7 +13,7 @@
 typedef struct CDHLIST CDHLIST;
 
 extern CDHLIST* new_CDHLIST(void);
-extern void add_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, int hourGiven);
-extern void removeElement_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, int hourGiven);
+extern void add_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, char* hourGiven);
+extern void removeElement_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, char* hourGiven);
 extern void print_CDHLIST(CDHLIST* this);
 #endif /* CDHLIST_h */

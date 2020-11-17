@@ -54,11 +54,11 @@ void add_CRLIST(CRLIST* this,char* courseGiven, char* roomGiven){
 void removeElement_CRLIST(CRLIST* this,char* courseGiven, char* roomGiven){
     CR* temp = this->head;
     CR* data = new_CR(courseGiven, roomGiven);
-    if(this->head->Course == data->Course){
+    if(this->head->Course == data->Course && this->head->Room == data->Room){
         this->head = temp->next;
     }
     else{
-        while(temp->next->Course != data->Course){
+        while(temp->next->Course != data->Course && temp->next->Room != temp->next->Room){
             temp = temp->next;
         }
         CR* newNext = temp->next->next;

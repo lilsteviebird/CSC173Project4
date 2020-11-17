@@ -18,71 +18,99 @@ Database new_Database(int size){
         return NULL;
     }
     this->size = size;
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < 6; i++){
         this->csgBuckets[i] = new_CSGLIST();
         this->cdhBuckets[i] = new_CDHLIST();
-        this->cpBuckets[i] = new_CPLIST();
-        this->crBuckets[i] = new_CRLIST();
+    }
+    for(int i = 0; i < 3; i++){
         this->snapBuckets[i] = new_SNAPLIST();
     }
-    this->count = 0;
+    for(int i = 0; i < 4; i++){
+        this->crBuckets[i] = new_CRLIST();
+    }
+    for(int i = 0; i < 8; i++){
+        this->cpBuckets[i] = new_CPLIST();
+    }
     return this;
 }
 
-static int hashId_Method(Database this, int idGiven){
-    int index = idGiven % this->size;
+static int hashId_Method(Database this, int idGiven, int mod){
+    int index = idGiven % mod;
     return index;
 }
 
-static int hashCourse_Method(Database this, char* courseGiven){
-    int index = 0;
+static int hashCourse_Method(Database this, char* courseGiven, int mod){
+    int index = 1;
     for(int i = 0; i < strlen(courseGiven); i++){
-        index = index * (int) courseGiven[i];
+        index = index + (int) courseGiven[i];
     }
     index = index % this->size;
     return index;
 }
-
+//insert methods
 void insert_CSGDatabase(char* courseGiven, int idGiven, char* gradeGiven, Database this){
-    int index = hashId_Method(this, idGiven);
+    int index = hashId_Method(this, idGiven, 6);
     add_CSGLIST(this->csgBuckets[index], courseGiven, idGiven, gradeGiven);
 }
 void insert_SNAPDatabase(int idGiven, char* nameGiven, char* addressGiven, char* phoneGiven, Database this){
-    int index = hashId_Method(this, idGiven);
+    int index = hashId_Method(this, idGiven, 3);
     add_SNAPLIST(this->snapBuckets[index], idGiven, nameGiven, addressGiven, phoneGiven);
 }
-void insert_CDHDatabase(char* courseGiven, char* dayGiven, int hourGiven, Database this){
-    int index = hashCourse_Method(this, courseGiven);
+void insert_CDHDatabase(char* courseGiven, char* dayGiven, char* hourGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 6);
     add_CDHLIST(this->cdhBuckets[index], courseGiven, dayGiven, hourGiven);
 }
 void insert_CRDatabase(char* courseGiven, char* roomGiven, Database this){
-    int index = hashCourse_Method(this, courseGiven);
+    int index = hashCourse_Method(this, courseGiven, 4);
     add_CRLIST(this->crBuckets[index], courseGiven, roomGiven);
 }
 void insert_CPDatabase(char* courseGiven, char* prereqGiven, Database this){
-    int index = hashCourse_Method(this, courseGiven);
+    int index = hashCourse_Method(this, courseGiven, 8);
     add_CPLIST(this->cpBuckets[index], courseGiven, prereqGiven);
 }
 
+//remove methods
+void remove_CSGDatabase(int idGiven, char* courseGiven, char* gradeGiven, Database this){
+    int index = hashId_Method(this, idGiven, 6);
+    removeElement_CSGLIST(this->csgBuckets[index], courseGiven, idGiven, gradeGiven);
+}
+void remove_SNAPDatabase(int idGiven, char* nameGiven, char* addressGiven, char* phoneGiven, Database this){
+    int index = hashId_Method(this, idGiven, 3);
+    removeElement_SNAPLIST(this->snapBuckets[index], idGiven, nameGiven, addressGiven, phoneGiven);
+}
+void remove_CDHDatabase(char* courseGiven, char* dayGiven, char* hourGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 6);
+    removeElement_CDHLIST(this->cdhBuckets[index], courseGiven, dayGiven, hourGiven);
+}
+void remove_CRDatabase(char* courseGiven, char* roomGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 4);
+    removeElement_CRLIST(this->crBuckets[index], courseGiven, roomGiven);
+}
+void remove_CPDatabase(char* courseGiven, char* prereqGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 8);
+    removeElement_CPLIST(this->cpBuckets[index], courseGiven, prereqGiven);
+}
+
+
 void print_Database(Database this){
     printf("Printing CSG database...\n");
-    for(int i = 0; i< this->size; i++){
+    for(int i = 0; i< 6; i++){
         print_CSGLIST(this->csgBuckets[i]);
     }
-    printf("Printing CDH database...\n");
-    for(int i = 0; i< this->size; i++){
+    printf("\nPrinting CDH database...\n");
+    for(int i = 0; i< 6; i++){
         print_CDHLIST(this->cdhBuckets[i]);
     }
-    printf("Printing CR database...\n");
-    for(int i = 0; i< this->size; i++){
-        print_CRLIST(this->crBuckets[i]);
-    }
-    printf("Printing CP database...\n");
-    for(int i = 0; i< this->size; i++){
+    printf("\nPrinting CP database...\n");
+    for(int i = 0; i< 8; i++){
         print_CPLIST(this->cpBuckets[i]);
     }
-    printf("Printing SNAP database...\n");
-    for(int i = 0; i< this->size; i++){
+    printf("\nPrinting CR database...\n");
+    for(int i = 0; i< 4; i++){
+        print_CRLIST(this->crBuckets[i]);
+    }
+    printf("\nPrinting SNAP database...\n");
+    for(int i = 0; i< 3; i++){
         print_SNAPLIST(this->snapBuckets[i]);
     }
 }
