@@ -11,8 +11,8 @@
 #include <string.h>
 
 typedef struct CP{
-    char Course[6];
-    char Prereq[50];
+    char* Course;
+    char* Prereq;
     struct CP *next;
 } CP;
 
@@ -26,8 +26,8 @@ static CP* new_CP(char* courseGiven, char* preReqGiven ){
         return NULL;
     }
     this->next = NULL;
-    strcpy(this->Course, courseGiven);
-    strcpy(this->Prereq, preReqGiven);
+    this->Course = courseGiven;
+    this->Prereq = preReqGiven;
     
     return this;
 };

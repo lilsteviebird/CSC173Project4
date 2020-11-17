@@ -11,9 +11,9 @@
 #include <string.h>
 typedef struct SNAP{
     int StudentId;
-    char Name[20];
-    char Address[50];
-    char Phone[11];
+    char* Name;
+    char* Address;
+    char* Phone;
     struct SNAP *next;
 } SNAP;
 
@@ -28,9 +28,10 @@ static SNAP* new_SNAP(int idGiven, char* nameGiven, char* addressGiven, char* ph
     }
     this->next = NULL;
     this->StudentId = idGiven;
-    strcpy(this->Name, nameGiven);
-    strcpy(this->Address, addressGiven);
-    strcpy(this->Phone, phoneGiven);
+    this->Name = nameGiven;
+    this->Address = addressGiven;
+    this->Phone = phoneGiven;
+
     
     return this;
 };

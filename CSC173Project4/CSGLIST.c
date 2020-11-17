@@ -12,9 +12,9 @@
 
 
 typedef struct CSG{
-    char Course[6];
+    char* Course;
     int StudentId;
-    char Grade[2];
+    char* Grade;
     struct CSG *next;
 } CSG;
 
@@ -29,8 +29,9 @@ static CSG* new_CSG(char* courseGiven, int idGiven, char* gradeGiven ){
     }
     this->next = NULL;
     this->StudentId = idGiven;
-    strcpy(this->Course, courseGiven);
-    strcpy(this->Grade, gradeGiven);
+    this->Course = courseGiven;
+    this->Grade = gradeGiven;
+
     
     return this;
 };

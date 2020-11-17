@@ -11,8 +11,8 @@
 #include <string.h>
 
 typedef struct CR{
-    char Course[6];
-    char Room[6];
+    char* Course;
+    char* Room;
     struct CR *next;
 } CR;
 
@@ -26,8 +26,8 @@ static CR* new_CR(char* courseGiven, char* roomGiven){
         return NULL;
     }
     this->next = NULL;
-    strcpy(this->Course, courseGiven);
-    strcpy(this->Room, roomGiven);
+    this->Course = courseGiven;
+    this->Room = roomGiven;
     
     return this;
 };

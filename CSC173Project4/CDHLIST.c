@@ -11,8 +11,8 @@
 #include <string.h>
 
 typedef struct CDH{
-    char Course[6];
-    char Day[50];
+    char* Course;
+    char* Day;
     int Hour;
     struct CDH *next;
 } CDH;
@@ -28,8 +28,8 @@ static CDH* new_CDH(char* courseGiven, char* dayGiven, int hourGiven ){
     }
     this->next = NULL;
     this->Hour = hourGiven;
-    strcpy(this->Course, courseGiven);
-    strcpy(this->Day, dayGiven);
+    this->Course = courseGiven;
+    this->Day = dayGiven;
     
     return this;
 };
