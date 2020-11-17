@@ -74,25 +74,49 @@ int main(int argc, const char * argv[]) {
             print_Database(testData);
         }
         if(selection == 2){
-            char* course = NULL;
+            char course[46];
             int id;
-            char* grade = NULL;
+            char grade[64];
             printf("\nPlease enter a Course: ");
-            scanf("%s", &course);
-            printf("\nPlease enter an ID: ");
+            scanf("%s", course);
+            printf("\nPlease enter a Student ID: ");
             scanf("%d", &id);
             printf("\nPlease enter a Grade: ");
-            scanf("%s", &grade);
+            scanf("%s", grade);
             remove_CSGDatabase(id, course, grade, testData);
         }
         if(selection == 3){
-            print_Database(testData);
+            char name[64];
+            int id;
+            char phone[64];
+            char address[64];
+            printf("\nPlease enter a Name: ");
+            scanf("%s", name);
+            printf("\nPlease enter a Student ID: ");
+            scanf("%d", &id);
+            printf("\nPlease enter a Phone Number: ");
+            scanf("%s", phone);
+            printf("\nPlease enter an Address: ");
+            scanf("%s", address);
+            remove_SNAPDatabase(id, name, address, phone, testData);
         }
         if(selection == 4){
-            print_Database(testData);
+            char course[64];
+            char prereq[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            printf("\nPlease enter a Pre Req: ");
+            scanf("%s", prereq);
+            remove_CPDatabase(course, prereq, testData);
         }
         if(selection == 5){
-            print_Database(testData);
+            char course[64];
+            char room[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            printf("\nPlease enter a Room: ");
+            scanf("%s", room);
+            remove_CRDatabase(course, room, testData);
         }
         if(selection == 6){
             print_Database(testData);
