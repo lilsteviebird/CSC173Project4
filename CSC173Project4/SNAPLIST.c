@@ -71,6 +71,19 @@ void removeElement_SNAPLIST(SNAPLIST* this, int idGiven, char* nameGiven, char* 
 
 }
 
+SNAPLIST* lookup_SNAPLIST(SNAPLIST* this, int idGiven){
+    SNAP* temp = this->head;
+    SNAPLIST* returnMe = new_SNAPLIST();
+    
+    while(temp != NULL){
+        if(temp->StudentId == idGiven){
+            add_SNAPLIST(returnMe, temp->StudentId, temp->Name, temp->Address, temp->Phone);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
 static void print_SNAP(SNAP* this){
     printf("\nThe student ID is: %d", this->StudentId);
     printf("\nThe student name is: %s", this->Name);

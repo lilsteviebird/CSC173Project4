@@ -67,6 +67,19 @@ void removeElement_CRLIST(CRLIST* this,char* courseGiven, char* roomGiven){
 
 }
 
+CRLIST* lookup_CRLIST(CRLIST* this, char* courseGiven){
+    CR* temp = this->head;
+    CRLIST* returnMe = new_CRLIST();
+    
+    while(temp != NULL){
+        if(temp->Course == courseGiven){
+            add_CRLIST(returnMe, temp->Course, temp->Room);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
 static void print_CR(CR* this){
     printf("\nThe course name is: %s", this->Course);
     printf("\nThe room of this course is: %s\n", this->Room);

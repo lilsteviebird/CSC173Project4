@@ -18,4 +18,6 @@ extern void add_SNAPLIST(SNAPLIST* this,int idGiven, char* nameGiven, char* addr
 extern void removeElement_SNAPLIST(SNAPLIST* this, int idGiven, char* nameGiven, char* addressGiven, char* phoneGiven);
 extern void print_SNAPLIST(SNAPLIST* this);
 
+extern SNAPLIST* lookup_SNAPLIST(SNAPLIST* this, int idGiven);
+
 #endif /* SNAPLIST_h */

@@ -50,15 +50,14 @@ int main(int argc, const char * argv[]) {
     insert_CDHDatabase("EE200", "W", "1PM", testData);
     insert_CDHDatabase("EE200", "Th", "10AM", testData);
     
-    print_Database(testData);
-    printf("\nNow we remove one of something from every list\n");
+    lookup_CSGDatabase(12345, testData);
+    //printf("\nNow we remove one of something from every list\n");
     remove_CRDatabase("EE200", "25 Ohm Hall", testData);
     remove_CSGDatabase(67890, "PH100", "C+", testData);
     remove_SNAPDatabase(22222, "C. Brown","12 Apple St.", "555-1234", testData);
     remove_CPDatabase("CS205", "CS101", testData);
     remove_CDHDatabase("EE200", "W", "1PM", testData);
+  
     
-    print_Database(testData);
-
     return 0;
 }

@@ -71,6 +71,19 @@ void removeElement_CSGLIST(CSGLIST* this, char* courseGiven, int idGiven, char* 
 
 }
 
+CSGLIST* lookup_CSGLIST(CSGLIST* this, int idGiven){
+    CSG* temp = this->head;
+    CSGLIST* returnMe = new_CSGLIST();
+    
+    while(temp != NULL){
+        if(temp->StudentId == idGiven){
+            add_CDHLIST(returnMe, temp->Course, temp->StudentId, temp->Grade);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
 static void print_CSG(CSG* this){
     printf("\nThe student ID is: %d", this->StudentId);
     printf("\nThe student course is: %s", this->Course);

@@ -69,7 +69,7 @@ void insert_CPDatabase(char* courseGiven, char* prereqGiven, Database this){
     add_CPLIST(this->cpBuckets[index], courseGiven, prereqGiven);
 }
 
-//remove methods
+//remove specific tuble methods
 void remove_CSGDatabase(int idGiven, char* courseGiven, char* gradeGiven, Database this){
     int index = hashId_Method(this, idGiven, 6);
     removeElement_CSGLIST(this->csgBuckets[index], courseGiven, idGiven, gradeGiven);
@@ -90,7 +90,34 @@ void remove_CPDatabase(char* courseGiven, char* prereqGiven, Database this){
     int index = hashCourse_Method(this, courseGiven, 8);
     removeElement_CPLIST(this->cpBuckets[index], courseGiven, prereqGiven);
 }
+//remove all courses or the ids that the tuple "starts with"
 
+//lookup functions
+
+void lookup_CSGDatabase(int idGiven, Database this){
+    int index = hashId_Method(this, idGiven, 6);
+    print_CSGLIST(lookup_CSGLIST(this->csgBuckets[index], idGiven));
+}
+
+void lookup_SNAPDatabase(int idGiven, Database this){
+    int index = hashId_Method(this, idGiven, 3);
+    print_SNAPLIST(lookup_SNAPLIST(this->snapBuckets[index], idGiven));
+}
+
+void lookup_CDHDatabase(char* courseGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 6);
+    print_CDHLIST(lookup_CDHLIST(this->cdhBuckets[index], courseGiven));
+}
+
+void lookup_CRDatabase(char* courseGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 4);
+    print_CRLIST(lookup_CRLIST(this->crBuckets[index], courseGiven));
+}
+
+void lookup_CPDatabase(char* courseGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 8);
+    print_CPLIST(lookup_CPLIST(this->cpBuckets[index], courseGiven));
+}
 
 void print_Database(Database this){
     printf("Printing CSG database...\n");

@@ -18,6 +18,7 @@ extern void add_CSGLIST(CSGLIST* this, char* courseGiven, int idGiven, char* gra
 extern void removeElement_CSGLIST(CSGLIST* this, char* courseGiven, int idGiven, char* gradeGiven );
 extern void print_CSGLIST(CSGLIST* this);
 
+extern CSGLIST* lookup_CSGLIST(CSGLIST* this, int idGiven);
 
 
 #endif /* CSGLIST_h */

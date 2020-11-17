@@ -70,6 +70,19 @@ void removeElement_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, char
 
 }
 
+CDHLIST* lookup_CDHLIST(CDHLIST* this, char* courseGiven){
+    CDH* temp = this->head;
+    CDHLIST* returnMe = new_CDHLIST();
+    
+    while(temp != NULL){
+        if(temp->Course == courseGiven){
+            add_CDHLIST(returnMe, temp->Course, temp->Day, temp->Hour);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
 static void print_CDH(CDH* this){
     printf("\nThe course name is: %s", this->Course);
     printf("\nThe day of this course is: %s", this->Day);

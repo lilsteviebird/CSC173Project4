@@ -16,4 +16,6 @@ extern CDHLIST* new_CDHLIST(void);
 extern void add_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, char* hourGiven);
 extern void removeElement_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGiven, char* hourGiven);
 extern void print_CDHLIST(CDHLIST* this);
+
+extern CDHLIST* lookup_CDHLIST(CDHLIST* this, char* courseGiven);
 #endif /* CDHLIST_h */

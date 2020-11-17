@@ -67,6 +67,20 @@ void removeElement_CPLIST(CPLIST* this, char* courseGiven, char* preReqGiven){
 
 }
 
+CPLIST* lookup_CPLIST(CPLIST* this, char* courseGiven){
+    CP* temp = this->head;
+    CPLIST* returnMe = new_CPLIST();
+    
+    while(temp != NULL){
+        if(temp->Course == courseGiven){
+            add_CPLIST(returnMe, temp->Course, temp->Prereq);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
+
 static void print_CP(CP* this){
     printf("\nThe course name is: %s", this->Course);
     printf("\nThe pre req is: %s\n", this->Prereq);

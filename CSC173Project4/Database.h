@@ -46,6 +46,12 @@ extern void remove_CDHDatabase(char* courseGiven, char* dayGiven, char* hourGive
 extern void remove_CRDatabase(char* courseGiven, char* roomGiven, Database this);
 extern void remove_CPDatabase(char* courseGiven, char* prereqGiven, Database this);
 
+//lookup functions
+extern void lookup_CSGDatabase(int idGiven, Database this);
+extern void lookup_SNAPDatabase(int idGiven, Database this);
+extern void lookup_CDHDatabase(char* courseGiven, Database this);
+extern void lookup_CRDatabase(char* courseGiven, Database this);
+extern void lookup_CPDatabase(char* courseGiven, Database this);
 //Print Database
 extern void print_Database(Database this);
 #endif /* Database_h */

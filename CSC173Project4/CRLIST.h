@@ -16,4 +16,5 @@ extern CRLIST* new_CRLIST(void);
 extern void add_CRLIST(CRLIST* this,char* courseGiven, char* roomGiven);
 extern void removeElement_CRLIST(CRLIST* this,char* courseGiven, char* roomGiven);
 extern void print_CRLIST(CRLIST* this);
+extern CRLIST* lookup_CRLIST(CRLIST* this, char* courseGiven);
 #endif /* CRLIST_h */
