@@ -171,6 +171,14 @@ int main(int argc, const char * argv[]) {
     printf("\n Now lets lookup what days and hours CS101 is going on\n");
     lookup_CDHDatabase("CS101", testData);
     
+    printf("\nNow testing part 3\n");
+    selectionCSGDatabase("CS101", testData2); printf("\n");
+
+    projectionCSGDatabase("CS101", testData2); printf("\n");
+
+    joinCR_CDHDatabase(testData); printf("\n");
+
+    allCR_CDHDatabase("Turing Aud.", testData2); printf("\n");
   
     
     return 0;

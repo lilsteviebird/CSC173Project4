@@ -130,7 +130,7 @@ static void printCSG_SID(CSG* this){
 void selectionCSG(CSGLIST* this, char* course){
     CSG* temp = this->head;
     while(temp != NULL){
-        if(strcmp(temp->Course,course)){
+        if(strcmp(temp->Course,course) == 0){
             printCSG(temp);
         }
         temp = temp->next;
@@ -140,7 +140,7 @@ void selectionCSG(CSGLIST* this, char* course){
 void projectionCSG(CSGLIST* this, char* course){
     CSG* temp = this->head;
     while(temp != NULL){
-        if(strcmp(temp->Course,course)){
+        if(strcmp(temp->Course,course) == 0){
             printCSG_SID(temp);
         }
         temp = temp->next;
