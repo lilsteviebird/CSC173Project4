@@ -225,7 +225,6 @@ void whereIsStudent(char* nameGiven, char* timeGiven, char* dayGiven, Database t
         SNAP* temp = tryMe->head;
         while(temp != NULL){
             if(temp->Name == nameGiven){
-                printf("got here");
                 goodId = temp->StudentId;
             }
             temp = temp->next;
