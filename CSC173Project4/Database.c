@@ -11,6 +11,39 @@
 #include <stdbool.h>
 #include <string.h>
 
+typedef struct SNAP{
+    int StudentId;
+    char* Name;
+    char* Address;
+    char* Phone;
+    struct SNAP *next;
+} SNAP;
+
+struct SNAPLIST {
+    struct SNAP* head;
+};
+
+typedef struct CSG{
+    char* Course;
+    int StudentId;
+    char* Grade;
+    struct CSG *next;
+} CSG;
+
+struct CSGLIST {
+    struct CSG* head;
+};
+
+typedef struct CDH{
+    char* Course;
+    char* Day;
+    char* Hour;
+    struct CDH *next;
+} CDH;
+
+struct CDHLIST {
+    struct CDH* head;
+};
 
 Database new_Database(int size){
     Database this = (Database)malloc(sizeof(struct Database));
@@ -146,6 +179,82 @@ void lookup_CRDatabase(char* courseGiven, Database this){
 void lookup_CPDatabase(char* courseGiven, Database this){
     int index = hashCourse_Method(this, courseGiven, 8);
     print_CPLIST(lookup_CPLIST(this->cpBuckets[index], courseGiven));
+}
+
+//Part 2 functions
+
+void gradeOfStudent(char* nameGiven, char* courseGiven, Database this){
+    //will throw access error if student not found
+    int goodId = 10000;
+    
+    for(int i = 0; i< sizeof(this->snapBuckets)/sizeof(SNAPLIST*); i++){
+        SNAPLIST* tryMe= this->snapBuckets[i];
+        SNAP* temp = tryMe->head;
+        while(temp != NULL){
+            if(temp->Name == nameGiven){
+                printf("got here");
+                goodId = temp->StudentId;
+            }
+            temp = temp->next;
+        }
+    }
+    for(int i = 0; i < sizeof(this->csgBuckets)/sizeof(CSGLIST*); i++){
+        CSGLIST* tryMe = this->csgBuckets[i];
+        CSG* temp = tryMe->head;
+        while(temp != NULL){
+            if(temp->Course == courseGiven && temp->StudentId == goodId){
+                printf("\nThe student ID is: %d", temp->StudentId);
+                printf("\nThe student course is: %s", temp->Course);
+                printf("\nThe student grade is: %s\n", temp->Grade);
+            }
+            temp = temp->next;
+        }
+    
+    }
+    
+}
+
+void whereIsStudent(char* nameGiven, char* timeGiven, char* dayGiven, Database this){
+    //will throw access error if id not found
+    int goodId = 10000;
+    
+    char* goodCourse;
+    
+    for(int i = 0; i< sizeof(this->snapBuckets)/sizeof(SNAPLIST*); i++){
+        SNAPLIST* tryMe= this->snapBuckets[i];
+        SNAP* temp = tryMe->head;
+        while(temp != NULL){
+            if(temp->Name == nameGiven){
+                printf("got here");
+                goodId = temp->StudentId;
+            }
+            temp = temp->next;
+        }
+    }
+    for(int i = 0; i < sizeof(this->csgBuckets)/sizeof(CSGLIST*); i++){
+        CSGLIST* tryMe = this->csgBuckets[i];
+        CSG* temp = tryMe->head;
+        while(temp != NULL){
+            if(temp->StudentId == goodId){
+                goodCourse = temp->Course;
+                for(int j = 0; j < sizeof(this->cdhBuckets)/sizeof(CDHLIST*); j++){
+                    CDHLIST* tryThis = lookup_CDHLIST(this->cdhBuckets[j], goodCourse);
+                    CDH* temp2 = tryThis->head;
+                    while(temp2 != NULL){
+                        if(temp2->Hour == timeGiven && temp2->Day == dayGiven){
+                            printf("\nThe course name is: %s", temp2->Course);
+                            printf("\nThe day of this course is: %s", temp2->Day);
+                            printf("\nThe hours of this course is: %s\n", temp2->Hour);
+                        }
+                        temp2 = temp2->next;
+                    }
+                }
+            }
+            temp = temp->next;
+        }
+    
+    }
+    
 }
 
 void print_Database(Database this){

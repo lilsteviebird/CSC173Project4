@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 typedef struct SNAPLIST SNAPLIST;
+typedef struct SNAP SNAP;
 
 extern SNAPLIST* new_SNAPLIST(void);
 extern void add_SNAPLIST(SNAPLIST* this,int idGiven, char* nameGiven, char* addressGiven, char* phoneGiven);

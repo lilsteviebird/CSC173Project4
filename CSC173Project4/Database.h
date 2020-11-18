@@ -59,6 +59,11 @@ extern void except_CSGDatabase(int idGiven, Database this);
 extern void except_CDHDatabase(char* courseGiven, Database this);
 extern void except_CPDatabase(char* courseGiven, Database this);
 extern void except_SNAPDatabase(int idGiven, Database this);
+
+//Part 2 methods
+extern void gradeOfStudent(char* nameGiven, char* courseGiven, Database this);
+extern void whereIsStudent(char* nameGiven, char* timeGiven, char* dayGiven, Database this);
+
 //Print Database
 extern void print_Database(Database this);
 #endif /* Database_h */

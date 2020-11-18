@@ -17,8 +17,8 @@ int main(int argc, const char * argv[]) {
     // insert code here...
     Database testData = new_Database(5);
     //inserting CSG data
-    insert_CSGDatabase("CSC101", 12345, "A", testData);
-    insert_CSGDatabase("CSC101", 67890, "B", testData);
+    insert_CSGDatabase("CS101", 12345, "A", testData);
+    insert_CSGDatabase("CS101", 67890, "B", testData);
     insert_CSGDatabase( "EE200", 12345, "C", testData);
     insert_CSGDatabase( "EE200", 22222, "B+", testData);
     insert_CSGDatabase( "CS101", 33333, "A-", testData);
@@ -49,123 +49,179 @@ int main(int argc, const char * argv[]) {
     insert_CDHDatabase("EE200", "W", "1PM", testData);
     insert_CDHDatabase("EE200", "Th", "10AM", testData);
     
-    print_Database(testData);
-    printf("\nNOW WE REMOVE SOMETHING\n");
-    except_SNAPDatabase(22222, testData);
-    print_Database(testData);
-//    bool running = true;
-//    while(running){
-//        int selection = 0;
-//        printf("Hello welcome to the Database tester please select an option you'd like to do");
-//        printf("\n1. Print Database");
-//        printf("\n2. Delete a specific Course, Student and Grade");
-//        printf("\n3. Delete a specific Student, Name, Address and Phone Number");
-//        printf("\n4. Delete a specific Course and Pre-Req");
-//        printf("\n5. Delete a specific Course, and Room");
-//        printf("\n6. Delete a specific Course, Day and Hour");
-//        printf("\n7. Lookup a Student's Course and Grade");
-//        printf("\n8. Lookup a Student's Name, Address, and Phone Number");
-//        printf("\n9. Lookup a Course and its Pre-Req");
-//        printf("\n10. Lookup a Course and its Room");
-//        printf("\n11. Lookup a Course and its Day and Hours");
-//
-//        printf("\nEnter a number: ");
-//        scanf("%d", &selection);
-//        if(selection == 1){
-//            print_Database(testData);
-//        }
-//        if(selection == 2){
-//            char course[46];
-//            int id;
-//            char grade[64];
-//            printf("\nPlease enter a Course: ");
-//            scanf("%s", course);
-//            printf("\nPlease enter a Student ID: ");
-//            scanf("%d", &id);
-//            printf("\nPlease enter a Grade: ");
-//            scanf("%s", grade);
-//            remove_CSGDatabase(id, course, grade, testData);
-//        }
-//        if(selection == 3){
-//            char name[64];
-//            int id;
-//            char phone[64];
-//            char address[64];
-//            printf("\nPlease enter a Name: ");
-//            scanf("%s", name);
-//            printf("\nPlease enter a Student ID: ");
-//            scanf("%d", &id);
-//            printf("\nPlease enter a Phone Number: ");
-//            scanf("%s", phone);
-//            printf("\nPlease enter an Address: ");
-//            scanf("%s", address);
-//            remove_SNAPDatabase(id, name, address, phone, testData);
-//        }
-//        if(selection == 4){
-//            char course[64];
-//            char prereq[64];
-//            printf("\nPlease enter a Course: ");
-//            scanf("%s", course);
-//            printf("\nPlease enter a Pre Req: ");
-//            scanf("%s", prereq);
-//            remove_CPDatabase(course, prereq, testData);
-//        }
-//        if(selection == 5){
-//            char course[64];
-//            char room[64];
-//            printf("\nPlease enter a Course: ");
-//            scanf("%s", course);
-//            printf("\nPlease enter a Room: ");
-//            scanf("%s", room);
-//            remove_CRDatabase(course, room, testData);
-//        }
-//        if(selection == 6){
-//            char course[64];
-//            char day[64];
-//            char hour[64];
-//            printf("\nPlease enter a Course: ");
-//            scanf("%s", course);
-//            printf("\nPlease enter a Day: ");
-//            scanf("%s", day);
-//            printf("\nPlease enter a hour: ");
-//            scanf("%s", hour);
-//            remove_CDHDatabase(course, day, hour, testData);
-//        }
-//        if(selection == 7){
-//            int id;
-//            printf("\nPlease enter a Student ID: ");
-//            scanf("%d", &id);
-//            lookup_CSGDatabase(id, testData);
-//        }
-//        if(selection == 8){
-//            int id;
-//            printf("\nPlease enter a Student ID: ");
-//            scanf("%d", &id);
-//            lookup_SNAPDatabase(id, testData);
-//        }
-//        if(selection == 9){
-//            char course[64];
-//            printf("\nPlease enter a Course: ");
-//            scanf("%s", course);
-//            lookup_CPDatabase(course, testData);
-//        }
-//        if(selection == 10){
-//            char course[64];
-//            printf("\nPlease enter a Course: ");
-//            scanf("%s", course);
-//            lookup_CRDatabase(course, testData);
-//        }
-//        if(selection == 11){
-//            char course[64];
-//            printf("\nPlease enter a Course: ");
-//            scanf("%s", course);
-//            lookup_CDHDatabase(course, testData);
-//        }
-//
-//
-//
-//
-//    }
+
+    bool running = true;
+    while(running){
+        int selection = 0;
+        printf("Hello welcome to the Database tester please select an option you'd like to do");
+        printf("\n1. Print Database");
+        printf("\n2. Delete a specific Course, Student and Grade");
+        printf("\n3. Delete a specific Student, Name, Address and Phone Number");
+        printf("\n4. Delete a specific Course and Pre-Req");
+        printf("\n5. Delete a specific Course, and Room");
+        printf("\n6. Delete a specific Course, Day and Hour");
+        printf("\n7. Lookup a Student's Course and Grade");
+        printf("\n8. Lookup a Student's Name, Address, and Phone Number");
+        printf("\n9. Lookup a Course and its Pre-Req");
+        printf("\n10. Lookup a Course and its Room");
+        printf("\n11. Lookup a Course and its Day and Hours");
+
+        printf("\n12. Delete all students with ID in CSG");
+        printf("\n13. Delete all Students with ID in SNAP");
+        printf("\n14. Delete all courses by course name in CP");
+        printf("\n15. Delete all courses by course name in CR");
+        printf("\n16. Delete all courses by course name in CDH");
+
+        printf("\n17. What grade did StudentName get in CourseName?");
+        printf("\n18. Where is StudentName at Time on Day?");
+
+        printf("\nEnter a number: ");
+        scanf("%d", &selection);
+        if(selection == 1){
+            print_Database(testData);
+        }
+        if(selection == 2){
+            char course[46];
+            int id;
+            char grade[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            printf("\nPlease enter a Student ID: ");
+            scanf("%d", &id);
+            printf("\nPlease enter a Grade: ");
+            scanf("%s", grade);
+            remove_CSGDatabase(id, course, grade, testData);
+        }
+        if(selection == 3){
+            char name[64];
+            int id;
+            char phone[64];
+            char address[64];
+            printf("\nPlease enter a Name: ");
+            scanf("%s", name);
+            printf("\nPlease enter a Student ID: ");
+            scanf("%d", &id);
+            printf("\nPlease enter a Phone Number: ");
+            scanf("%s", phone);
+            printf("\nPlease enter an Address: ");
+            scanf("%s", address);
+            remove_SNAPDatabase(id, name, address, phone, testData);
+        }
+        if(selection == 4){
+            char course[64];
+            char prereq[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            printf("\nPlease enter a Pre Req: ");
+            scanf("%s", prereq);
+            remove_CPDatabase(course, prereq, testData);
+        }
+        if(selection == 5){
+            char course[64];
+            char room[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            printf("\nPlease enter a Room: ");
+            scanf("%s", room);
+            remove_CRDatabase(course, room, testData);
+        }
+        if(selection == 6){
+            char course[64];
+            char day[64];
+            char hour[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            printf("\nPlease enter a Day: ");
+            scanf("%s", day);
+            printf("\nPlease enter a hour: ");
+            scanf("%s", hour);
+            remove_CDHDatabase(course, day, hour, testData);
+        }
+        if(selection == 7){
+            int id;
+            printf("\nPlease enter a Student ID: ");
+            scanf("%d", &id);
+            lookup_CSGDatabase(id, testData);
+        }
+        if(selection == 8){
+            int id;
+            printf("\nPlease enter a Student ID: ");
+            scanf("%d", &id);
+            lookup_SNAPDatabase(id, testData);
+        }
+        if(selection == 9){
+            char course[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            lookup_CPDatabase(course, testData);
+        }
+        if(selection == 10){
+            char course[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            lookup_CRDatabase(course, testData);
+        }
+        if(selection == 11){
+            char course[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            lookup_CDHDatabase(course, testData);
+        }
+        if(selection == 12){
+            int id;
+            printf("\nPlease enter a Student ID: ");
+            scanf("%d", &id);
+            except_CSGDatabase(id, testData);
+        }
+        if(selection == 13){
+            int id;
+            printf("\nPlease enter a Student ID: ");
+            scanf("%d", &id);
+            except_SNAPDatabase(id, testData);
+        }
+        if(selection == 14){
+            char course[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            except_CPDatabase(course, testData);
+        }
+        if(selection == 15){
+            char course[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            except_CRDatabase(course, testData);
+        }
+        if(selection == 16){
+            char course[64];
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            except_CDHDatabase(course, testData);
+        }
+        if(selection == 17){
+            char course[64];
+            char name[64];
+            printf("\nPlease enter a Name: ");
+            scanf("%s", name);
+            printf("\nPlease enter a Course: ");
+            scanf("%s", course);
+            gradeOfStudent(name, course, testData);
+        }
+        if(selection == 18){
+            char day[64];
+            char hour[64];
+            char name[64];
+            printf("\nPlease enter a Name: ");
+            scanf("%s", name);
+            printf("\nPlease enter an Hour: ");
+            scanf("%s", hour);
+            printf("\nPlease enter a Day: ");
+            scanf("%s", day);
+            whereIsStudent(name, hour, day, testData);
+        }
+
+
+
+    }
     
   
     
