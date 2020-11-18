@@ -185,6 +185,8 @@ void lookup_CPDatabase(char* courseGiven, Database this){
 
 void gradeOfStudent(char* nameGiven, char* courseGiven, Database this){
     //will throw access error if student not found
+    //printf("LOOK WHAT Im GETTING: %s", nameGiven);
+    //printf("LOOK WHAT IM GETTING: %s", courseGiven);
     int goodId = 10000;
     
     for(int i = 0; i< sizeof(this->snapBuckets)/sizeof(SNAPLIST*); i++){
@@ -192,7 +194,6 @@ void gradeOfStudent(char* nameGiven, char* courseGiven, Database this){
         SNAP* temp = tryMe->head;
         while(temp != NULL){
             if(temp->Name == nameGiven){
-                printf("got here");
                 goodId = temp->StudentId;
             }
             temp = temp->next;

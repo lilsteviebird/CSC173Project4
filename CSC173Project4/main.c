@@ -49,8 +49,14 @@ int main(int argc, const char * argv[]) {
     insert_CDHDatabase("EE200", "W", "1PM", testData);
     insert_CDHDatabase("EE200", "Th", "10AM", testData);
     
-    gradeOfStudent("C.Brown", "CS101", testData);
-    whereIsStudent("C.Brown", "9AM", "M", testData);
+//    gradeOfStudent("C.Brown", "CS101", testData);
+//    whereIsStudent("C.Brown", "9AM", "M", testData);
+    
+    //The code below for some reason rejects user input, I have print statements in the method that
+    //demonstrates that the method is indeed getting both name and course correctly but doesn't run
+    //What is baffling is that the lines above do work which shows the method works?
+    
+    /*
     char* name;
     char* course;
     printf("\nPlease enter a Name: ");
@@ -59,44 +65,75 @@ int main(int argc, const char * argv[]) {
     printf("\nPlease enter a Course: ");
     scanf("%s", &course);
     printf("%s", &course);
+
+
+    gradeOfStudent(&name, &course, testData);
+    gradeOfStudent(fixName, fixCourse, testData);
+     */
+
+    bool running = true;
     
-    gradeOfStudent(name, course, testData);
+    while(running){
+        int selection = 0;
+        printf("\nHello welcome to the Database tester please select an option you'd like to do");
+        printf("\n1. What grade did C.Brown get in CS101?");
+        printf("\n2. What grade did C.Brown get in EE200?");
+        printf("\n3. What grade did L.Brown get in PH101?");
+        printf("\n4. What grade did P.Patty get in PH101?");
+        printf("\n5. Where is C.Brown at 9AM on M?");
+        printf("\n6. What grade did P.Patty get in PH101?");
+        printf("\n7. What grade did P.Patty get in PH101?");
+        printf("\n8. What grade did P.Patty get in PH101?");
+
+        printf("\n9. To test the rest of part 1");
+
+        printf("\nEnter a number: ");
+        scanf("%d", &selection);
+
+        if(selection == 1){
+            gradeOfStudent("C.Brown", "CS101", testData);
+        }
+        if(selection == 2){
+            gradeOfStudent("C.Brown", "EE200", testData);
+        }
+        if(selection == 3){
+            gradeOfStudent("L.Brown", "PH101", testData);
+        }
+        if(selection == 4){
+            gradeOfStudent("P.Patty", "EE200", testData);
+        }
+        if(selection == 5){
+            whereIsStudent("C.Brown", "9AM", "M", testData);
+        }
+        if(selection == 6){
+            whereIsStudent("C.Brown", "9AM", "W", testData);
+
+        }
+        if(selection == 7){
+            whereIsStudent("L.Brown", "9AM", "M", testData);
+
+        }
+        if(selection == 8){
+            whereIsStudent("P.Patty", "1PM", "W", testData);
+
+        }
+        if(selection == 9){
+            running = false;
+        }
 
 
-//    while(running){
-//        int selection = 0;
-//        printf("\nHello welcome to the Database tester please select an option you'd like to do");
-//        printf("\n1. What grade did StudentName get in CourseName?");
-//        printf("\n2. Where is StudentName at Time on Day?");
-//
-//        printf("\nEnter a number: ");
-//        scanf("%d", &selection);
-//
-//        if(selection == 1){
-//            char course[64];
-//            char name[64];
-//            printf("\nPlease enter a Name: ");
-//            scanf("%s", name);
-//            printf("\nPlease enter a Course: ");
-//            scanf("%s\n", course);
-//            gradeOfStudent(name, course, testData);
-//        }
-//        if(selection == 2){
-//            char day[64];
-//            char hour[64];
-//            char name[64];
-//            printf("\nPlease enter a Name: ");
-//            scanf("%s", name);
-//            printf("\nPlease enter an Hour: ");
-//            scanf("%s", hour);
-//            printf("\nPlease enter a Day: ");
-//            scanf("%s", day);
-//            whereIsStudent(name, hour, day, testData);
-//        }
-//
-//
-//
-//    }
+
+    }
+    
+    printf("\nNow here is the existing Database, which shows the insertion above works\n");
+    print_Database(testData);
+    printf("\n Lets Remove all of student ID 12345 from the existing CSG\n");
+    except_CSGDatabase(12345, testData);
+    except_SNAPDatabase(12345, testData);
+    printf("\n Now lets print out the new database\n");
+    print_Database(testData);
+    printf("\n Now lets lookup what days and hours CS101 is going on\n");
+    lookup_CDHDatabase("CS101", testData);
     
   
     
