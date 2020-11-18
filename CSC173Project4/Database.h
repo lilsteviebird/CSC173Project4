@@ -64,6 +64,14 @@ extern void except_SNAPDatabase(int idGiven, Database this);
 extern void gradeOfStudent(char* nameGiven, char* courseGiven, Database this);
 extern void whereIsStudent(char* nameGiven, char* timeGiven, char* dayGiven, Database this);
 
+//Part 3
+extern void allCR_CDH(CRLIST* cr, CDHLIST* cdh, char* room);
+extern void joinCR_CDH(CRLIST* cr, CDHLIST* cdh);
+extern void selectionCSGDatabase(char* course, Database this);
+extern void projectionCSGDatabase(char* course, Database this);
+extern void joinCR_CDHDatabase(Database this);
+extern void allCR_CDHDatabase(char* room, Database this);
+
 //Print Database
 extern void print_Database(Database this);
 #endif /* Database_h */

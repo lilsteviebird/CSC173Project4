@@ -45,6 +45,16 @@ struct CDHLIST {
     struct CDH* head;
 };
 
+typedef struct CR{
+    char* Course;
+    char* Room;
+    struct CR *next;
+} CR;
+
+struct CRLIST {
+    struct CR* head;
+};
+
 Database new_Database(int size){
     Database this = (Database)malloc(sizeof(struct Database));
     if(this == NULL){
@@ -256,6 +266,78 @@ void whereIsStudent(char* nameGiven, char* timeGiven, char* dayGiven, Database t
     }
     
 }
+
+static void printCR_CDH(CR* cr, CDH* cdh){
+    printf("Course: %s", cr->Course);
+    printf("\tRoom: %s", cr->Room);
+    printf("\tDay: %s", cdh->Day);
+    printf("\tGrade: %s\n", cdh->Hour);
+}
+
+static void printCR_CDH_DH(CR* cr, CDH* cdh){
+    printf("Day: %s", cdh->Day);
+    printf("\tGrade: %s\n", cdh->Hour);
+}
+
+void joinCR_CDH(CRLIST* cr, CDHLIST* cdh){
+    CR* crt = cr->head;
+    CDH* cdht = cdh->head;
+    
+    while(crt != NULL){
+        while(cdht != NULL){
+            if(strcmp(crt->Course,cdht->Course)){
+                printCR_CDH(crt,cdht);
+            }
+            cdht = cdht->next;
+        }
+        crt = crt->next;
+    }
+}
+
+void allCR_CDH(CRLIST* cr, CDHLIST* cdh, char* room){
+    CR* crt = cr->head;
+    CDH* cdht = cdh->head;
+    
+    while(crt != NULL){
+        while(cdht != NULL){
+            if(strcmp(crt->Course,cdht->Course)&&strcmp(crt->Room,room)){
+                printCR_CDH_DH(crt,cdht);
+            }
+            cdht = cdht->next;
+        }
+        crt = crt->next;
+    }
+}
+
+void selectionCSGDatabase(char* course, Database this) {
+    for(int i = 0; i < 6; i++){
+        selectionCSG(this->csgBuckets[i], course);
+    }
+}
+
+void projectionCSGDatabase(char* course, Database this) {
+    for(int i = 0; i < 6; i++){
+        projectionCSG(this->csgBuckets[i], course);
+    }
+}
+
+void joinCR_CDHDatabase(Database this){
+    for(int i = 0; i < 6; i++){
+        for(int r = 0; r < 4; r++){
+            joinCR_CDH(this->crBuckets[r],this->cdhBuckets[i]);
+        }
+    }
+}
+
+void allCR_CDHDatabase(char* room, Database this){
+    for(int i = 0; i < 6; i++){
+        for(int r = 0; r < 4; r++){
+            allCR_CDH(this->crBuckets[r],this->cdhBuckets[i], room);
+        }
+    }
+}
+
+
 
 void print_Database(Database this){
     printf("Printing CSG database...\n");

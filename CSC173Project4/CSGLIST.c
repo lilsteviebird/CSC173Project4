@@ -97,6 +97,7 @@ CSGLIST* lookup_CSGLIST(CSGLIST* this, int idGiven){
     return returnMe;
 }
 
+
 static void print_CSG(CSG* this){
     printf("\nThe student ID is: %d", this->StudentId);
     printf("\nThe student course is: %s", this->Course);
@@ -113,4 +114,37 @@ void print_CSGLIST(CSGLIST* this){
         print_CSG(temp);
     }
 }
+
+static void printCSG(CSG* this){
+    printf("ID: %d", this->StudentId);
+    printf("\tCourse: %s", this->Course);
+    printf("\tGrade: %s\n", this->Grade);
+}
+
+static void printCSG_SID(CSG* this){
+    printf("ID: %d", this->StudentId);
+    printf("\n");
+}
+
+
+void selectionCSG(CSGLIST* this, char* course){
+    CSG* temp = this->head;
+    while(temp != NULL){
+        if(strcmp(temp->Course,course)){
+            printCSG(temp);
+        }
+        temp = temp->next;
+    }
+}
+
+void projectionCSG(CSGLIST* this, char* course){
+    CSG* temp = this->head;
+    while(temp != NULL){
+        if(strcmp(temp->Course,course)){
+            printCSG_SID(temp);
+        }
+        temp = temp->next;
+    }
+}
+
 

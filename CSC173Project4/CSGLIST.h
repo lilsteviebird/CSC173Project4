@@ -21,4 +21,7 @@ extern void print_CSGLIST(CSGLIST* this);
 extern CSGLIST* lookup_CSGLIST(CSGLIST* this, int idGiven);
 extern CSGLIST* except_CSGLIST(CSGLIST* this, int idGiven);
 
+extern void projectionCSG(CSGLIST* this, char* course);
+extern void selectionCSG(CSGLIST* this, char* course);
+
 #endif /* CSGLIST_h */
