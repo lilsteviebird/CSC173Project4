@@ -18,5 +18,5 @@ extern void removeElement_CPLIST(CPLIST* this, char* courseGiven, char* preReqGi
 extern void print_CPLIST(CPLIST* this);
 
 extern CPLIST* lookup_CPLIST(CPLIST* this, char* courseGiven);
-
+extern CPLIST* except_CPLIST(CPLIST* this, char* courseGiven);
 #endif /* CPLIST_h */

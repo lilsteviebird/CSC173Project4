@@ -18,4 +18,5 @@ extern void removeElement_CDHLIST(CDHLIST* this,char* courseGiven, char* dayGive
 extern void print_CDHLIST(CDHLIST* this);
 
 extern CDHLIST* lookup_CDHLIST(CDHLIST* this, char* courseGiven);
+extern CDHLIST* except_CDHLIST(CDHLIST* this, char* courseGiven);
 #endif /* CDHLIST_h */

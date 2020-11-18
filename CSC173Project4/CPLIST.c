@@ -67,6 +67,19 @@ void removeElement_CPLIST(CPLIST* this, char* courseGiven, char* preReqGiven){
 
 }
 
+CPLIST* except_CPLIST(CPLIST* this, char* courseGiven){
+    CP* temp = this->head;
+    CPLIST* returnMe = new_CPLIST();
+    
+    while(temp != NULL){
+        if(temp->Course != courseGiven){
+            add_CPLIST(returnMe, temp->Course, temp->Prereq);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
 CPLIST* lookup_CPLIST(CPLIST* this, char* courseGiven){
     CP* temp = this->head;
     CPLIST* returnMe = new_CPLIST();

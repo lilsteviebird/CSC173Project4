@@ -71,6 +71,19 @@ void removeElement_SNAPLIST(SNAPLIST* this, int idGiven, char* nameGiven, char* 
 
 }
 
+SNAPLIST* except_SNAPLIST(SNAPLIST* this, int idGiven){
+    SNAP* temp = this->head;
+    SNAPLIST* returnMe = new_SNAPLIST();
+    
+    while(temp != NULL){
+        if(temp->StudentId != idGiven){
+            add_SNAPLIST(returnMe, temp->StudentId, temp->Name, temp->Address, temp->Phone);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
 SNAPLIST* lookup_SNAPLIST(SNAPLIST* this, int idGiven){
     SNAP* temp = this->head;
     SNAPLIST* returnMe = new_SNAPLIST();

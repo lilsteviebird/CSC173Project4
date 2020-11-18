@@ -67,6 +67,19 @@ void removeElement_CRLIST(CRLIST* this,char* courseGiven, char* roomGiven){
 
 }
 
+CRLIST* except_CRLIST(CRLIST* this, char* courseGiven){
+    CR* temp = this->head;
+    CRLIST* returnMe = new_CRLIST();
+    
+    while(temp != NULL){
+        if(temp->Course != courseGiven){
+            add_CRLIST(returnMe, temp->Course, temp->Room);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
 CRLIST* lookup_CRLIST(CRLIST* this, char* courseGiven){
     CR* temp = this->head;
     CRLIST* returnMe = new_CRLIST();

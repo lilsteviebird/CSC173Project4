@@ -52,6 +52,13 @@ extern void lookup_SNAPDatabase(int idGiven, Database this);
 extern void lookup_CDHDatabase(char* courseGiven, Database this);
 extern void lookup_CRDatabase(char* courseGiven, Database this);
 extern void lookup_CPDatabase(char* courseGiven, Database this);
+
+//delete everything by given tuple functions
+extern void except_CRDatabase(char* courseGiven, Database this);
+extern void except_CSGDatabase(int idGiven, Database this);
+extern void except_CDHDatabase(char* courseGiven, Database this);
+extern void except_CPDatabase(char* courseGiven, Database this);
+extern void except_SNAPDatabase(int idGiven, Database this);
 //Print Database
 extern void print_Database(Database this);
 #endif /* Database_h */

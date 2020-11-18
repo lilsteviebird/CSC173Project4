@@ -71,6 +71,19 @@ void removeElement_CSGLIST(CSGLIST* this, char* courseGiven, int idGiven, char* 
 
 }
 
+CSGLIST* except_CSGLIST(CSGLIST* this, int idGiven){
+    CSG* temp = this->head;
+    CSGLIST* returnMe = new_CSGLIST();
+    
+    while(temp != NULL){
+        if(temp->StudentId != idGiven){
+            add_CSGLIST(returnMe, temp->Course, temp->StudentId, temp->Grade);
+        }
+        temp = temp->next;
+    }
+    return returnMe;
+}
+
 CSGLIST* lookup_CSGLIST(CSGLIST* this, int idGiven){
     CSG* temp = this->head;
     CSGLIST* returnMe = new_CSGLIST();

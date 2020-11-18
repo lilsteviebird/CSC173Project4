@@ -19,5 +19,5 @@ extern void removeElement_SNAPLIST(SNAPLIST* this, int idGiven, char* nameGiven,
 extern void print_SNAPLIST(SNAPLIST* this);
 
 extern SNAPLIST* lookup_SNAPLIST(SNAPLIST* this, int idGiven);
-
+extern SNAPLIST* except_SNAPLIST(SNAPLIST* this, int idGiven);
 #endif /* SNAPLIST_h */

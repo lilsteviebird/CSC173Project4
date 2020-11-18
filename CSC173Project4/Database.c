@@ -91,6 +91,35 @@ void remove_CPDatabase(char* courseGiven, char* prereqGiven, Database this){
     removeElement_CPLIST(this->cpBuckets[index], courseGiven, prereqGiven);
 }
 //remove all courses or the ids that the tuple "starts with"
+void except_CSGDatabase(int idGiven, Database this){
+    int index = hashId_Method(this, idGiven, 6);
+    CSGLIST* withMe = except_CSGLIST(this->csgBuckets[index], idGiven);
+    this->csgBuckets[index] = withMe;
+}
+
+void except_CDHDatabase(char* courseGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 6);
+    CDHLIST* withMe = except_CDHLIST(this->cdhBuckets[index], courseGiven);
+    this->cdhBuckets[index] = withMe;
+}
+
+void except_CPDatabase(char* courseGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 8);
+    CPLIST* withMe = except_CPLIST(this->cpBuckets[index], courseGiven);
+    this->cpBuckets[index] = withMe;
+}
+
+void except_CRDatabase(char* courseGiven, Database this){
+    int index = hashCourse_Method(this, courseGiven, 4);
+    CRLIST* withMe = except_CRLIST(this->crBuckets[index], courseGiven);
+    this->crBuckets[index] = withMe;
+}
+
+void except_SNAPDatabase(int idGiven, Database this){
+    int index = hashId_Method(this, idGiven, 3);
+    SNAPLIST* withMe = except_SNAPLIST(this->snapBuckets[index], idGiven);
+    this->snapBuckets[index] = withMe;
+}
 
 //lookup functions
 
