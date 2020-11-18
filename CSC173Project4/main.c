@@ -49,6 +49,42 @@ int main(int argc, const char * argv[]) {
     insert_CDHDatabase("EE200", "W", "1PM", testData);
     insert_CDHDatabase("EE200", "Th", "10AM", testData);
     
+        Database testData2 = new_Database(5);
+        //inserting CSG data
+        insert_CSGDatabase("CS101", 12345, "A", testData2);
+        insert_CSGDatabase("CS101", 67890, "B", testData2);
+        insert_CSGDatabase( "EE200", 12345, "C", testData2);
+        insert_CSGDatabase( "EE200", 22222, "B+", testData2);
+        insert_CSGDatabase( "CS101", 33333, "A-", testData2);
+        insert_CSGDatabase( "PH100", 67890, "C+", testData2);
+        //inserting SNAP data
+        insert_SNAPDatabase(12345, "C.Brown", "12 Apple St.", "555-1234", testData2);
+        insert_SNAPDatabase(67890, "L.Brown", "34 Pear Ave.", "555-5678", testData2);
+        insert_SNAPDatabase(22222, "P.Patty", "56 Grape Blvd.", "555-9999", testData2);
+        //inserting CP data
+        insert_CPDatabase("CS101", "CS100", testData2);
+        insert_CPDatabase("EE200", "EE005", testData2);
+        insert_CPDatabase("EE200", "CS100", testData2);
+        insert_CPDatabase("CS120", "CS101", testData2);
+        insert_CPDatabase("CS121", "CS120", testData2);
+        insert_CPDatabase("CS205", "CS101", testData2);
+        insert_CPDatabase("CS206", "CS121", testData2);
+        insert_CPDatabase("CS206", "CS205", testData2);
+        
+        //inserting CR data
+        insert_CRDatabase("CS101", "Turing Aud.", testData2);
+        insert_CRDatabase("EE200", "25 Ohm Hall", testData2);
+        insert_CRDatabase("PH100", "Newton Lab.", testData2);
+    //    //inserting CDH data
+        insert_CDHDatabase("CS101", "M", "9AM", testData2);
+        insert_CDHDatabase("CS101", "W", "9AM", testData2);
+        insert_CDHDatabase("CS101", "F", "9AM", testData2);
+        insert_CDHDatabase("EE200", "Tu", "10AM", testData2);
+        insert_CDHDatabase("EE200", "W", "1PM", testData2);
+        insert_CDHDatabase("EE200", "Th", "10AM", testData2);
+
+    
+    
 //    gradeOfStudent("C.Brown", "CS101", testData);
 //    whereIsStudent("C.Brown", "9AM", "M", testData);
     
